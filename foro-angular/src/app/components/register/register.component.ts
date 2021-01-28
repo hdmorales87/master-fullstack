@@ -8,39 +8,40 @@ import { UserService } from '../../services/user.service';
   	styleUrls: ['./register.component.css'],
   	providers: [UserService]
 })
+
 export class RegisterComponent implements OnInit {
 
-	public page_title: string;
-	public user: User;
-	public status: string;
+    public page_title: string;
+    public user: User;
+    public status: string;
 
   	constructor(
-  		private _userService: UserService
+  		  private _userService: UserService
   	){
-  		this.status = '';
-  		this.page_title = 'Registrate';
-  		this.user = new User('','','','','','','ROLE_USER');
+    		this.status = '';
+    		this.page_title = 'Registrate';
+    		this.user = new User('','','','','','','ROLE_USER');
   	}
 
   	ngOnInit(): void {
-  		console.log(this._userService.prueba());
+  		  console.log(this._userService.prueba());
   	}
 
   	onSubmit(form:any){
-  		this._userService.register(this.user).subscribe(
-  			response => {
-  				if(response.user && response.user._id){
-  					this.status = 'success';
-  					form.reset();
-  				}
-  				else{
-  					this.status = 'error';
-  				}  				
-  			},
-  			error => {
-  				this.status = 'error';
-  				console.log(error);
-  			}
-  		);  		
+    		this._userService.register(this.user).subscribe(
+      			response => {
+        				if(response.user && response.user._id){
+          					this.status = 'success';
+          					form.reset();
+        				}
+        				else{
+        					  this.status = 'error';
+        				}  				
+      			},
+      			error => {
+        				this.status = 'error';
+        				console.log(error);
+      			}
+    		);  		
   	}
 }
