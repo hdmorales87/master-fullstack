@@ -12,6 +12,7 @@ import { global } from '../../services/global';
   	styleUrls: ['../post-new/post-new.component.css'],
   	providers: [UserService, PostService, CategoryService]
 })
+
 export class PostEditComponent implements OnInit {
 
   	public page_title : string;
@@ -25,7 +26,7 @@ export class PostEditComponent implements OnInit {
     public categories:any;
     public is_edit:boolean;    
 
-     public froala_options:Object = {
+    public froala_options:Object = {
         charCounterCount: true,
         language : 'es',
         toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat'],
@@ -63,17 +64,17 @@ export class PostEditComponent implements OnInit {
     };
 
   	constructor(
-  		  private _route: ActivatedRoute,
-  		  private _router: Router,
-  		  private _userService: UserService,
-  		  private _categoryService: CategoryService,
-  		  private _postService: PostService
+  		private _route: ActivatedRoute,
+  		private _router: Router,
+  		private _userService: UserService,
+  		private _categoryService: CategoryService,
+  		private _postService: PostService
   	){ 
   		this.page_title = 'Editar entrada';     
         this.resetVar = false;   
   		this.identity = this._userService.getIdentity(); 
         this.url = global.url;
-        this.post = new Post();    
+        this.post = new Post(1,1,1,'','','',null);    
         this.token = this._userService.getToken();            
         this.status = "";   
         this.statusImage = "";  

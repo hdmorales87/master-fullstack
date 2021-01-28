@@ -12,55 +12,55 @@ import { global } from '../../services/global';
   	styleUrls: ['./profile.component.css'],
   	providers: [ PostService,UserService ]
 })
+
 export class ProfileComponent implements OnInit {
   	
-	public url:string;
-	public posts:any;
-	public user: User;
-	public identity:any;
-	public token:any;
+	  public url:string;
+	  public posts:any;
+	  public user: User;
+	  public identity:any;
+	  public token:any;
 
   	constructor(
-  		private _postService: PostService,
-		private _userService: UserService,
-		private _route: ActivatedRoute, 
-  		private _router: Router  	 
-  	){   		
-		this.url = global.url;
-		this.identity = this._userService.getIdentity();
-		this.token = this._userService.getToken();
+  		  private _postService: PostService,
+		    private _userService: UserService,
+		    private _route: ActivatedRoute, 
+  		  private _router: Router  	 
+  	){   
+        this.user = new User(1,'','','','','ROLE_USER','',''); 		
+		    this.url = global.url;
+		    this.identity = this._userService.getIdentity();
+		    this.token = this._userService.getToken();
   	}
 
   	ngOnInit(): void {
-  		this.getProfile();
+  		  this.getProfile();
   	}
 
   	getProfile(){
-  		this._route.params.subscribe(params => {
-      		let userId = +params['id'];
-      		this.getUser(userId);
-  			this.getPosts(userId);
-  		});
+    		this._route.params.subscribe(params => {
+        		let userId = +params['id'];
+        		this.getUser(userId);
+    			  this.getPosts(userId);
+    		});
   	}
 
-  	getUser(userId){
-  		this._userService.getUser(userId).subscribe(	
-  			response => {
+  	getUser(userId:number){
+    		this._userService.getUser(userId).subscribe(	
+      			response => {
                 if(response.status == "success"){
                     this.user = response.user; 
-
-                    console.log(this.user);
                 }
             },
             error => {
                 console.log(<any>error);
             }
-  		);
+      	);
   	}
 
-  	getPosts(userId){
-		this._userService.getPosts(userId).subscribe(	
-			response => {
+  	getPosts(userId:number){
+		    this._userService.getPosts(userId).subscribe(	
+			      response => {
                 if(response.status == "success"){
                     this.posts = response.posts; 
                 }
@@ -68,7 +68,6 @@ export class ProfileComponent implements OnInit {
             error => {
                 console.log(<any>error);
             }
-		);
-	}
-
+		    );
+	  }
 }

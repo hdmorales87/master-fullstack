@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { PostService } from '../../services/post.service';
-import { Post } from '../../models/post';
 
 @Component({
   	selector: 'app-post-detail',
@@ -11,15 +10,15 @@ import { Post } from '../../models/post';
 })
 export class PostDetailComponent implements OnInit {
 
-	 public page_title : string;
-	 public post: Post;
+	  public page_title : string;
+	  public post: any;
 
   	constructor(
   		  private _postService: PostService,
   		  private _route: ActivatedRoute, 
   		  private _router: Router  	 		
   	) { 
-  		  this.post = new Post(1,0,1,'','','',null); 
+  		  this.post = null;
   		  this.page_title = 'Crear una entrada'; 
   	}
 

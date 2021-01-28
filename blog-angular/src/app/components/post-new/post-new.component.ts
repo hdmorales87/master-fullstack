@@ -12,6 +12,7 @@ import { global } from '../../services/global';
   	styleUrls: ['./post-new.component.css'],
   	providers: [UserService, PostService, CategoryService]
 })
+
 export class PostNewComponent implements OnInit {
 
   	public page_title : string;
@@ -63,11 +64,11 @@ export class PostNewComponent implements OnInit {
     };
 
   	constructor(
-  		  private _route: ActivatedRoute,
-  		  private _router: Router,
-  		  private _userService: UserService,
-  		  private _categoryService: CategoryService,
-  		  private _postService: PostService
+  		private _route: ActivatedRoute,
+  		private _router: Router,
+  		private _userService: UserService,
+  		private _categoryService: CategoryService,
+  		private _postService: PostService
   	){ 
   		this.page_title = 'Crear una entrada';     
         this.resetVar = false;  
@@ -128,5 +129,4 @@ export class PostNewComponent implements OnInit {
             }
         );  
     }
-
 }
