@@ -17,23 +17,24 @@ import { CategoryDetailComponent } from './components/category-detail/category-d
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+//GUARDA DE RUTAS
 import { IdentityGuard } from './services/identity.guard';
 
 //DEFINIR RUTAS
 const appRoutes : Routes = [
-	{path: '', component: HomeComponent},
-	{path: 'inicio', component: HomeComponent},
-	{path: 'login', component: LoginComponent},
-	{path: 'logout/:sure', component: LoginComponent},	
-	{path: 'registro', component: RegisterComponent},
-	{path: 'ajustes', component: UserEditComponent, canActivate:[IdentityGuard]},
-	{path: 'crear-entrada', component: PostNewComponent, canActivate:[IdentityGuard]},
-	{path: 'crear-categoria', component: CategoryNewComponent, canActivate:[IdentityGuard]},	
-	{path: 'entrada/:id', component: PostDetailComponent},	
-	{path: 'editar-entrada/:id', component: PostEditComponent, canActivate:[IdentityGuard]},
-	{path: 'categoria/:id', component: CategoryDetailComponent},
-	{path: 'perfil/:id', component: ProfileComponent},			
-	{path: '**', component: ErrorComponent}	
+	{ path: '', component: HomeComponent },
+	{ path: 'inicio', component: HomeComponent },
+	{ path: 'login', component: LoginComponent },
+	{ path: 'logout/:sure', component: LoginComponent },	
+	{ path: 'registro', component: RegisterComponent },
+	{ path: 'ajustes', component: UserEditComponent, canActivate:[IdentityGuard] },
+	{ path: 'crear-entrada', component: PostNewComponent, canActivate:[IdentityGuard] },
+	{ path: 'crear-categoria', component: CategoryNewComponent, canActivate:[IdentityGuard] },	
+	{ path: 'entrada/:id', component: PostDetailComponent },	
+	{ path: 'editar-entrada/:id', component: PostEditComponent, canActivate:[IdentityGuard] },
+	{ path: 'categoria/:id', component: CategoryDetailComponent },
+	{ path: 'perfil/:id', component: ProfileComponent },			
+	{ path: '**', component: ErrorComponent }	
 ];
 
 //EXPORTAR CONFIGURACIÓN

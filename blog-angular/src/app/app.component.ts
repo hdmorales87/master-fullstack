@@ -30,7 +30,7 @@ export class AppComponent implements OnInit, DoCheck {
     }
 
     ngDoCheck(){
-    	  this.loadUser(); 
+    	this.loadUser(); 
     }
 
     loadUser(){
@@ -50,5 +50,4 @@ export class AppComponent implements OnInit, DoCheck {
             }
         );
     }
-
 }

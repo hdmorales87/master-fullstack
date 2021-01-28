@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient,HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {User} from '../models/user';
-import {global} from './global';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User } from '../models/user';
+import { global } from './global';
 
 @Injectable()
 export class UserService {
@@ -61,7 +61,7 @@ export class UserService {
 		//obtener la identidad del JSON
 		let identity = JSON.parse(localStorage.getItem('identity') || '"undefined"');
 
-		if(identity && identity != "undefined"){
+		if(identity && identity != "undefined" && identity != null && identity != undefined){
 			this.identity = identity;
 		}
 		else{
@@ -74,7 +74,7 @@ export class UserService {
 	getToken(){
 		let token = localStorage.getItem('token');
 
-		if(token && token != "undefined"){
+		if(token && token != "undefined" && token != null && token != undefined){
 			this.token = token;
 		}
 		else{

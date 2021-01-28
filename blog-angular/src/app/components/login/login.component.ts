@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
                 }
                 else{
                     this.status = 'error';
-                }                
+                }
             },
             error => {
                 this.status = 'error';
@@ -85,5 +85,4 @@ export class LoginComponent implements OnInit {
 			}
 		});
 	}
-
 }

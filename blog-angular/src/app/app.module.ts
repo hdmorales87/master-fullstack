@@ -34,7 +34,14 @@ import { PostListComponent } from './components/post-list/post-list.component';
         RegisterComponent,    
         HomeComponent, 
         ErrorComponent, 
-        UserEditComponent, CategoryNewComponent, PostNewComponent, PostDetailComponent, PostEditComponent, CategoryDetailComponent, ProfileComponent, PostListComponent
+        UserEditComponent, 
+        CategoryNewComponent, 
+        PostNewComponent, 
+        PostDetailComponent, 
+        PostEditComponent, 
+        CategoryDetailComponent, 
+        ProfileComponent, 
+        PostListComponent
     ],
     imports: [
         BrowserModule,
