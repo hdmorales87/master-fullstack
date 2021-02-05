@@ -4,15 +4,15 @@
 	    	<h1 class="display-4">{{page_title}}</h1>
 	    	<p class="lead">Pon tus dudas, aprende y ayuda a tus compañeros desarrolladores :)</p>
 	    	<p>
-    			<a class="btn btn-primary btn-lg mr-3" href="#">
+    			<a class="btn btn-primary btn-lg mr-3" [routerLink]="['/temas']">
     				Ver temas
 				</a>
 
-				<a class="btn btn-success btn-lg mr-3" href="#">
+				<a class="btn btn-success btn-lg mr-3" [routerLink]="['/usuarios']">
     				Ver compañeros
 				</a>
 
-				<a class="btn btn-warning btn-lg mr-3" href="#">
+				<a class="btn btn-warning btn-lg mr-3" [routerLink]="['/panel/crear']">
     				Añade un nuevo tema
 				</a>
 			</p>

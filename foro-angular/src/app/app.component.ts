@@ -12,9 +12,10 @@ import { global } from './services/global';
 export class AppComponent implements OnInit, DoCheck {
 
   	public title = 'foro-angular';
-    public url:string;
-  	public identity:any;
-  	public token:any; 
+    public url: string;
+  	public identity: any;
+  	public token: any; 
+    public search: string;
 
   	constructor(
   		  private _userService: UserService,
@@ -22,11 +23,12 @@ export class AppComponent implements OnInit, DoCheck {
         private _route: ActivatedRoute
   	){
         this.url = global.url; 
+        this.search = '';
   		  this.loadUser();
   	}
 
   	ngOnInit(){
-    	  console.log(this.identity, this.token);        
+    	  //console.log(this.identity, this.token);        
     }
 
     ngDoCheck(){
@@ -48,5 +50,9 @@ export class AppComponent implements OnInit, DoCheck {
 
         //Redirección a inicio
         this._router.navigate(['/inicio']);            
+    }
+
+    goSearch(){
+        this._router.navigate(['/buscar', this.search]);
     }
 }

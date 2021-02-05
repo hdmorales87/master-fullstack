@@ -153,8 +153,9 @@ var controller = {
 
 		//Find por id del topic
 		Topic.findById(topicId)
-			 .populate('user')
-			 .exec((err, topic) => {
+			.populate('user')
+			.populate('comments.user')
+			.exec((err, topic) => {
 
 		 		if(err){
 		 			return res.status(500).send({
@@ -175,7 +176,7 @@ var controller = {
 					status: 'success',
 					topic
 				});
-			 });		
+			});		
 	},
 
 	update: function(req, res){
@@ -280,6 +281,7 @@ var controller = {
 			{ "code": { "$regex": searchString, "$options": "i" } },			
 			{ "lang": { "$regex": searchString, "$options": "i" } }
 		]})
+		.populate('user')
 		.sort([['date','descending']])
 		.exec((err, topics) => {
 

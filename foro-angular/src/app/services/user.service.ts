@@ -77,7 +77,7 @@ export class UserService {
 		return this.token;
 	}
 
-	update(user:any): Observable<any>{
+	update(user: any): Observable<any>{
 		//Convertir el usuario a un json string
 		let params = JSON.stringify(user);
 
@@ -87,5 +87,15 @@ export class UserService {
 
 		//Hacer petición ajax
 		return this._http.put(this.url+'user', params, { headers: headers });
+	}
+
+	getUsers(): Observable<any>{	
+		//Hacer petición ajax
+		return this._http.get(this.url+'users');
+	}
+
+	getUser(userId: any): Observable<any>{	
+		//Hacer petición ajax
+		return this._http.get(this.url+'user/'+userId);
 	}
 }

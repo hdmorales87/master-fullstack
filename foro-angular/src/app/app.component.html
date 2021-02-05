@@ -16,23 +16,23 @@
                     <a class="nav-link" [routerLink]="['/inicio']">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Temas</a>
+                    <a class="nav-link" [routerLink]="['/temas']">Temas</a>
                 </li>  
                 <li class="nav-item" *ngIf="identity">
-                    <a class="nav-link" href="#">Crear temas</a>
+                    <a class="nav-link" [routerLink]="['/panel/crear']">Crear temas</a>
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Compañeros</a>
+                    <a class="nav-link" [routerLink]="['/usuarios']">Compañeros</a>
                 </li>  
                 <li class="nav-item">
                     &nbsp;&nbsp;
                 </li>              
                 <li class="nav-item">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="¿Que estás buscando?" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <form class="form-inline my-2 my-lg-0" #searchForm="ngForm">
+                        <input class="form-control mr-sm-2" type="search" placeholder="¿Que estás buscando?" aria-label="Search" name="busqueda" #busqueda="ngModel" [(ngModel)]="search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="goSearch()">Search</button>
                     </form>
-                </li> 
+                </li>                 
             </ul>            
             <ul class="navbar-nav navbar-right">
                 <li class="nav-item" *ngIf="!identity">
@@ -41,9 +41,10 @@
                 <li class="nav-item" *ngIf="!identity">
                     <a class="nav-link" [routerLink]="['/login']">Login</a>
                 </li>
-                <li *ngIf="identity && identity.image" class="nav-item">
+                <li *ngIf="identity" class="nav-item">
                     <div class="avatar_mask">
-                        <img src="{{url+'avatar/'+identity.image}}" class="avatar_nav" />
+                        <img src="{{url+'avatar/'+identity.image}}" *ngIf="identity.image"/>
+                        <img src="assets/images/user-profile.png" *ngIf="!identity.image"/>
                     </div>
                 </li>
                 <li class="nav-item dropdown" *ngIf="identity">
@@ -51,8 +52,8 @@
                         {{identity.name + ' ' + identity.surname}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item cursor-pointer" href="#">Panel de usuario</a>
-                        <a class="dropdown-item cursor-pointer" href="#">Mi perfil</a>
+                        <a class="dropdown-item cursor-pointer" [routerLink]="['/panel']">Panel de usuario</a>
+                        <a class="dropdown-item cursor-pointer" [routerLink]="['/perfil', identity._id]">Mi perfil</a>
                         <a class="dropdown-item cursor-pointer" [routerLink]="['/ajustes']">Ajustes</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item cursor-pointer" (click)="logout()">Cerrar sesión</a>
@@ -63,9 +64,10 @@
     </nav>
     <!-- CONTENIDO -->
     <router-outlet></router-outlet> 
+    <div class="clearfix"></div>
     <footer>
         <hr/>
         Blog desarrollado con AngularJS por Hector Morales &copy;
         <hr/>
-    </footer>
+    </footer>    
 </div>
