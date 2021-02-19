@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS api_laravel;
-USE api_laravel;
+CREATE DATABASE IF NOT EXISTS api_rest_laravel;
+USE api_rest_laravel;
 
 CREATE TABLE users(
 	id 				int(255) auto_increment not null,
